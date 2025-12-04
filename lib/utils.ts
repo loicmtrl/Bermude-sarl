@@ -53,8 +53,8 @@ export function round2(value: number | string) {
   }
 }
 
-const CURRENCY_FORMATTER = new Intl.NumberFormat('en-US', {
-  currency: 'USD',
+const CURRENCY_FORMATTER = new Intl.NumberFormat('fr-CH', {
+  currency: 'CHF',
   style: 'currency',
   minimumFractionDigits: 2,
 });

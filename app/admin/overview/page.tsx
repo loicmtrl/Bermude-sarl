@@ -16,7 +16,7 @@ import Charts from './charts';
 import { requireAdmin } from '@/lib/auth-guard';
 
 export const metadata: Metadata = {
-  title: 'Admin Dashboard',
+  title: 'Tableau de bord admin',
 };
 
 const AdminOverviewPage = async () => {
@@ -26,11 +26,11 @@ const AdminOverviewPage = async () => {
 
   return (
     <div className='space-y-2'>
-      <h1 className='h2-bold'>Dashboard</h1>
+      <h1 className='h2-bold'>Tableau de bord</h1>
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
         <Card>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>Total Revenue</CardTitle>
+            <CardTitle className='text-sm font-medium'>Revenu total</CardTitle>
             <BadgeDollarSign />
           </CardHeader>
           <CardContent>
@@ -43,7 +43,7 @@ const AdminOverviewPage = async () => {
         </Card>
         <Card>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>Sales</CardTitle>
+            <CardTitle className='text-sm font-medium'>Ventes</CardTitle>
             <CreditCard />
           </CardHeader>
           <CardContent>
@@ -54,7 +54,7 @@ const AdminOverviewPage = async () => {
         </Card>
         <Card>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>Customers</CardTitle>
+            <CardTitle className='text-sm font-medium'>Clients</CardTitle>
             <Users />
           </CardHeader>
           <CardContent>
@@ -65,7 +65,7 @@ const AdminOverviewPage = async () => {
         </Card>
         <Card>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-            <CardTitle className='text-sm font-medium'>Products</CardTitle>
+            <CardTitle className='text-sm font-medium'>Produits</CardTitle>
             <Barcode />
           </CardHeader>
           <CardContent>
@@ -78,7 +78,7 @@ const AdminOverviewPage = async () => {
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
         <Card className='col-span-4'>
           <CardHeader>
-            <CardTitle>Overview</CardTitle>
+            <CardTitle>Vue d’ensemble</CardTitle>
           </CardHeader>
           <CardContent>
             <Charts
@@ -90,13 +90,13 @@ const AdminOverviewPage = async () => {
         </Card>
         <Card className='col-span-3'>
           <CardHeader>
-            <CardTitle>Recent Sales</CardTitle>
+            <CardTitle>Ventes récentes</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>BUYER</TableHead>
+                  <TableHead>ACHETEUR</TableHead>
                   <TableHead>DATE</TableHead>
                   <TableHead>TOTAL</TableHead>
                   <TableHead>ACTIONS</TableHead>
@@ -106,7 +106,9 @@ const AdminOverviewPage = async () => {
                 {summary.latestSales.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell>
-                      {order?.user?.name ? order.user.name : 'Deleted User'}
+                      {order?.user?.name
+                        ? order.user.name
+                        : 'Utilisateur supprimé'}
                     </TableCell>
                     <TableCell>
                       {formatDateTime(order.createdAt).dateOnly}
@@ -114,7 +116,7 @@ const AdminOverviewPage = async () => {
                     <TableCell>{formatCurrency(order.totalPrice)}</TableCell>
                     <TableCell>
                       <Link href={`/order/${order.id}`}>
-                        <span className='px-2'>Details</span>
+                        <span className='px-2'>Détails</span>
                       </Link>
                     </TableCell>
                   </TableRow>

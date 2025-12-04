@@ -6,11 +6,11 @@ import React from 'react';
 
 const links = [
   {
-    title: 'Profile',
+    title: 'Profil',
     href: '/user/profile',
   },
   {
-    title: 'Orders',
+    title: 'Commandes',
     href: '/user/orders',
   },
 ];

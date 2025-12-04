@@ -62,9 +62,9 @@ const OrderDetailsTable = ({
     let status = '';
 
     if (isPending) {
-      status = 'Loading PayPal...';
+      status = 'Chargement de PayPal...';
     } else if (isRejected) {
-      status = 'Error Loading PayPal';
+      status = 'Erreur de chargement PayPal';
     }
     return status;
   };
@@ -110,7 +110,7 @@ const OrderDetailsTable = ({
           })
         }
       >
-        {isPending ? 'processing...' : 'Mark As Paid'}
+        {isPending ? 'Traitement...' : 'Marquer comme payé'}
       </Button>
     );
   };
@@ -134,32 +134,32 @@ const OrderDetailsTable = ({
           })
         }
       >
-        {isPending ? 'processing...' : 'Mark As Delivered'}
+        {isPending ? 'Traitement...' : 'Marquer comme livré'}
       </Button>
     );
   };
 
   return (
     <>
-      <h1 className='py-4 text-2xl'>Order {formatId(id)}</h1>
+      <h1 className='py-4 text-2xl'>Commande {formatId(id)}</h1>
       <div className='grid md:grid-cols-3 md:gap-5'>
         <div className='col-span-2 space-4-y overlow-x-auto'>
           <Card>
             <CardContent className='p-4 gap-4'>
-              <h2 className='text-xl pb-4'>Payment Method</h2>
+              <h2 className='text-xl pb-4'>Mode de paiement</h2>
               <p className='mb-2'>{paymentMethod}</p>
               {isPaid ? (
                 <Badge variant='secondary'>
-                  Paid at {formatDateTime(paidAt!).dateTime}
+                  Payé le {formatDateTime(paidAt!).dateTime}
                 </Badge>
               ) : (
-                <Badge variant='destructive'>Not paid</Badge>
+                <Badge variant='destructive'>Non payé</Badge>
               )}
             </CardContent>
           </Card>
           <Card className='my-2'>
             <CardContent className='p-4 gap-4'>
-              <h2 className='text-xl pb-4'>Shipping Address</h2>
+              <h2 className='text-xl pb-4'>Adresse de livraison</h2>
               <p>{shippingAddress.fullName}</p>
               <p className='mb-2'>
                 {shippingAddress.streetAddress}, {shippingAddress.city}
@@ -167,22 +167,22 @@ const OrderDetailsTable = ({
               </p>
               {isDelivered ? (
                 <Badge variant='secondary'>
-                  Delivered at {formatDateTime(deliveredAt!).dateTime}
+                  Livré le {formatDateTime(deliveredAt!).dateTime}
                 </Badge>
               ) : (
-                <Badge variant='destructive'>Not Delivered</Badge>
+                <Badge variant='destructive'>Non livré</Badge>
               )}
             </CardContent>
           </Card>
           <Card>
             <CardContent className='p-4 gap-4'>
-              <h2 className='text-xl pb-4'>Order Items</h2>
+              <h2 className='text-xl pb-4'>Articles de la commande</h2>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Item</TableHead>
-                    <TableHead>Quantity</TableHead>
-                    <TableHead>Price</TableHead>
+                    <TableHead>Article</TableHead>
+                    <TableHead>Quantité</TableHead>
+                    <TableHead>Prix</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -206,7 +206,7 @@ const OrderDetailsTable = ({
                         <span className='px-2'>{item.qty}</span>
                       </TableCell>
                       <TableCell className='text-right'>
-                        ${item.price}
+                        {formatCurrency(item.price)}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -219,15 +219,15 @@ const OrderDetailsTable = ({
           <Card>
             <CardContent className='p-4 gap-4 space-y-4'>
               <div className='flex justify-between'>
-                <div>Items</div>
+                <div>Articles</div>
                 <div>{formatCurrency(itemsPrice)}</div>
               </div>
               <div className='flex justify-between'>
-                <div>Tax</div>
+                <div>Taxes</div>
                 <div>{formatCurrency(taxPrice)}</div>
               </div>
               <div className='flex justify-between'>
-                <div>Shipping</div>
+                <div>Livraison</div>
                 <div>{formatCurrency(shippingPrice)}</div>
               </div>
               <div className='flex justify-between'>

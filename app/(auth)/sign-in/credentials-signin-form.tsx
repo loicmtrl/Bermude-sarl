@@ -24,7 +24,7 @@ const CredentialsSignInForm = () => {
 
     return (
       <Button disabled={pending} className='w-full' variant='default'>
-        {pending ? 'Signing In...' : 'Sign In'}
+        {pending ? 'Connexion...' : 'Se connecter'}
       </Button>
     );
   };
@@ -34,7 +34,7 @@ const CredentialsSignInForm = () => {
       <input type='hidden' name='callbackUrl' value={callbackUrl} />
       <div className='space-y-6'>
         <div>
-          <Label htmlFor='email'>Email</Label>
+          <Label htmlFor='email'>Courriel</Label>
           <Input
             id='email'
             name='email'
@@ -45,7 +45,7 @@ const CredentialsSignInForm = () => {
           />
         </div>
         <div>
-          <Label htmlFor='password'>Password</Label>
+          <Label htmlFor='password'>Mot de passe</Label>
           <Input
             id='password'
             name='password'
@@ -64,9 +64,9 @@ const CredentialsSignInForm = () => {
         )}
 
         <div className='text-sm text-center text-muted-foreground'>
-          Don&apos;t have an account?{' '}
+          Vous n&apos;avez pas de compte?{' '}
           <Link href='/sign-up' target='_self' className='link'>
-            Sign Up
+            S&apos;inscrire
           </Link>
         </div>
       </div>

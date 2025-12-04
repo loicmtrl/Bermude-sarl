@@ -79,8 +79,8 @@ const StripePayment = ({
           disabled={stripe == null || elements == null || isLoading}
         >
           {isLoading
-            ? 'Purchasing...'
-            : `Purchase ${formatCurrency(priceInCents / 100)}`}
+            ? 'Traitement...'
+            : `Acheter ${formatCurrency(priceInCents / 100)}`}
         </Button>
       </form>
     );
@@ -95,10 +95,10 @@ const StripePayment = ({
             theme === 'dark'
               ? 'night'
               : theme === 'light'
-              ? 'stripe'
-              : systemTheme === 'light'
-              ? 'stripe'
-              : 'night',
+                ? 'stripe'
+                : systemTheme === 'light'
+                  ? 'stripe'
+                  : 'night',
         },
       }}
       stripe={stripePromise}

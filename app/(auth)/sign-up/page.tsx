@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation';
 import SignUpForm from './sign-up-form';
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: 'Inscription',
 };
 
 const SignUpPage = async (props: {
@@ -43,9 +43,9 @@ const SignUpPage = async (props: {
               priority={true}
             />
           </Link>
-          <CardTitle className='text-center'>Create Account</CardTitle>
+          <CardTitle className='text-center'>Créer un compte</CardTitle>
           <CardDescription className='text-center'>
-            Enter your information below to sign up
+            Entrez vos informations ci-dessous pour vous inscrire
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-4'>

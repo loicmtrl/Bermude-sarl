@@ -54,9 +54,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
   return (
     <>
       <div className='max-w-md mx-auto space-y-4'>
-        <h1 className='h2-bold mt-4'>Shipping Address</h1>
+        <h1 className='h2-bold mt-4'>Adresse de livraison</h1>
         <p className='text-sm text-muted-foreground'>
-          Please enter and address to ship to
+          Veuillez entrer une adresse de livraison
         </p>
         <Form {...form}>
           <form
@@ -77,9 +77,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                   >;
                 }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>Nom complet</FormLabel>
                     <FormControl>
-                      <Input placeholder='Enter full name' {...field} />
+                      <Input placeholder='Entrez le nom complet' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -99,9 +99,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                   >;
                 }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>Address</FormLabel>
+                    <FormLabel>Adresse</FormLabel>
                     <FormControl>
-                      <Input placeholder='Enter address' {...field} />
+                      <Input placeholder='Entrez l’adresse' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -121,9 +121,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                   >;
                 }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>City</FormLabel>
+                    <FormLabel>Ville</FormLabel>
                     <FormControl>
-                      <Input placeholder='Enter city' {...field} />
+                      <Input placeholder='Entrez la ville' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -143,9 +143,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                   >;
                 }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>Postal Code</FormLabel>
+                    <FormLabel>Code postal</FormLabel>
                     <FormControl>
-                      <Input placeholder='Enter postal code' {...field} />
+                      <Input placeholder='Entrez le code postal' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -165,9 +165,9 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                   >;
                 }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>Country</FormLabel>
+                    <FormLabel>Pays</FormLabel>
                     <FormControl>
-                      <Input placeholder='Enter country' {...field} />
+                      <Input placeholder='Entrez le pays' {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -181,7 +181,7 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
                 ) : (
                   <ArrowRight className='w-4 h-4' />
                 )}{' '}
-                Continue
+                Continuer
               </Button>
             </div>
           </form>

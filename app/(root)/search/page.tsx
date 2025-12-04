@@ -8,23 +8,23 @@ import Link from 'next/link';
 
 const prices = [
   {
-    name: '$1 to $50',
+    name: 'CHF 1 à CHF 50',
     value: '1-50',
   },
   {
-    name: '$51 to $100',
+    name: 'CHF 51 à CHF 100',
     value: '51-100',
   },
   {
-    name: '$101 to $200',
+    name: 'CHF 101 à CHF 200',
     value: '101-200',
   },
   {
-    name: '$201 to $500',
+    name: 'CHF 201 à CHF 500',
     value: '201-500',
   },
   {
-    name: '$501 to $1000',
+    name: 'CHF 501 à CHF 1000',
     value: '501-1000',
   },
 ];
@@ -57,14 +57,14 @@ export async function generateMetadata(props: {
   if (isQuerySet || isCategorySet || isPriceSet || isRatingSet) {
     return {
       title: `
-      Search ${isQuerySet ? q : ''} 
-      ${isCategorySet ? `: Category ${category}` : ''}
-      ${isPriceSet ? `: Price ${price}` : ''}
-      ${isRatingSet ? `: Rating ${rating}` : ''}`,
+      Recherche ${isQuerySet ? q : ''}''} 
+      ${isCategorySet ? `: Catégorie ${category}` : ''}
+      ${isPriceSet ? `: Prix ${price}` : ''}
+      ${isRatingSet ? `: Note ${rating}` : ''}`,
     };
   } else {
     return {
-      title: 'Search Products',
+      title: 'Rechercher des produits',
     };
   }
 }
@@ -128,7 +128,7 @@ const SearchPage = async (props: {
     <div className='grid md:grid-cols-5 md:gap-5'>
       <div className='filter-links'>
         {/* Category Links */}
-        <div className='text-xl mb-2 mt-3'>Department</div>
+        <div className='text-xl mb-2 mt-3'>Catégorie</div>
         <div>
           <ul className='space-y-1'>
             <li>
@@ -138,7 +138,7 @@ const SearchPage = async (props: {
                 }`}
                 href={getFilterUrl({ c: 'all' })}
               >
-                Any
+                Toutes
               </Link>
             </li>
             {categories.map((x) => (
@@ -154,7 +154,7 @@ const SearchPage = async (props: {
           </ul>
         </div>
         {/* Price Links */}
-        <div className='text-xl mb-2 mt-8'>Price</div>
+        <div className='text-xl mb-2 mt-8'>Prix</div>
         <div>
           <ul className='space-y-1'>
             <li>
@@ -162,7 +162,7 @@ const SearchPage = async (props: {
                 className={`${price === 'all' && 'font-bold'}`}
                 href={getFilterUrl({ p: 'all' })}
               >
-                Any
+                Tous
               </Link>
             </li>
             {prices.map((p) => (
@@ -178,7 +178,7 @@ const SearchPage = async (props: {
           </ul>
         </div>
         {/* Rating Links */}
-        <div className='text-xl mb-2 mt-8'>Customer Ratings</div>
+        <div className='text-xl mb-2 mt-8'>Évaluations des clients</div>
         <div>
           <ul className='space-y-1'>
             <li>
@@ -186,7 +186,7 @@ const SearchPage = async (props: {
                 className={`${rating === 'all' && 'font-bold'}`}
                 href={getFilterUrl({ r: 'all' })}
               >
-                Any
+                Toutes
               </Link>
             </li>
             {ratings.map((r) => (
@@ -195,7 +195,7 @@ const SearchPage = async (props: {
                   className={`${rating === r.toString() && 'font-bold'}`}
                   href={getFilterUrl({ r: `${r}` })}
                 >
-                  {`${r} stars & up`}
+                  {`${r} étoiles et plus`}
                 </Link>
               </li>
             ))}
@@ -205,35 +205,41 @@ const SearchPage = async (props: {
       <div className='md:col-span-4 space-y-4'>
         <div className='flex-between flex-col md:flex-row my-4'>
           <div className='flex items-center'>
-            {q !== 'all' && q !== '' && 'Query: ' + q}
-            {category !== 'all' && category !== '' && 'Category: ' + category}
-            {price !== 'all' && ' Price: ' + price}
-            {rating !== 'all' && ' Rating: ' + rating + ' stars & up'}
+            {q !== 'all' && q !== '' && 'Recherche: ' + q}
+            {category !== 'all' && category !== '' && 'Catégorie: ' + category}
+            {price !== 'all' && ' Prix: ' + price}
+            {rating !== 'all' && ' Note: ' + rating + ' étoiles et plus'}
             &nbsp;
             {(q !== 'all' && q !== '') ||
             (category !== 'all' && category !== '') ||
             rating !== 'all' ||
             price !== 'all' ? (
               <Button variant={'link'} asChild>
-                <Link href='/search'>Clear</Link>
+                <Link href='/search'>Effacer</Link>
               </Button>
             ) : null}
           </div>
           <div>
-            Sort by{' '}
+            Trier par{' '}
             {sortOrders.map((s) => (
               <Link
                 key={s}
                 className={`mx-2 ${sort == s && 'font-bold'}`}
                 href={getFilterUrl({ s })}
               >
-                {s}
+                {s === 'newest'
+                  ? 'nouveautés'
+                  : s === 'lowest'
+                    ? 'prix croissant'
+                    : s === 'highest'
+                      ? 'prix décroissant'
+                      : 'note'}
               </Link>
             ))}
           </div>
         </div>
         <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
-          {products.data.length === 0 && <div>No products found</div>}
+          {products.data.length === 0 && <div>Aucun produit trouvé</div>}
           {products.data.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

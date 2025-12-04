@@ -16,7 +16,7 @@ import DeleteDialog from '@/components/shared/delete-dialog';
 import { requireAdmin } from '@/lib/auth-guard';
 
 export const metadata: Metadata = {
-  title: 'Admin Orders',
+  title: 'Commandes admin',
 };
 
 const AdminOrdersPage = async (props: {
@@ -34,13 +34,13 @@ const AdminOrdersPage = async (props: {
   return (
     <div className='space-y-2'>
       <div className='flex items-center gap-3'>
-        <h1 className='h2-bold'>Orders</h1>
+        <h1 className='h2-bold'>Commandes</h1>
         {searchText && (
           <div>
-            Filtered by <i>&quot;{searchText}&quot;</i>{' '}
+            Filtré par <i>&quot;{searchText}&quot;</i>{' '}
             <Link href='/admin/orders'>
               <Button variant='outline' size='sm'>
-                Remove Filter
+                Retirer le filtre
               </Button>
             </Link>
           </div>
@@ -52,10 +52,10 @@ const AdminOrdersPage = async (props: {
             <TableRow>
               <TableHead>ID</TableHead>
               <TableHead>DATE</TableHead>
-              <TableHead>BUYER</TableHead>
+              <TableHead>ACHETEUR</TableHead>
               <TableHead>TOTAL</TableHead>
-              <TableHead>PAID</TableHead>
-              <TableHead>DELIVERED</TableHead>
+              <TableHead>PAYÉ</TableHead>
+              <TableHead>LIVRÉ</TableHead>
               <TableHead>ACTIONS</TableHead>
             </TableRow>
           </TableHeader>
@@ -71,16 +71,16 @@ const AdminOrdersPage = async (props: {
                 <TableCell>
                   {order.isPaid && order.paidAt
                     ? formatDateTime(order.paidAt).dateTime
-                    : 'Not Paid'}
+                    : 'Non payé'}
                 </TableCell>
                 <TableCell>
                   {order.isDelivered && order.deliveredAt
                     ? formatDateTime(order.deliveredAt).dateTime
-                    : 'Not Delivered'}
+                    : 'Non livré'}
                 </TableCell>
                 <TableCell>
                   <Button asChild variant='outline' size='sm'>
-                    <Link href={`/order/${order.id}`}>Details</Link>
+                    <Link href={`/order/${order.id}`}>Détails</Link>
                   </Button>
                   <DeleteDialog id={order.id} action={deleteOrder} />
                 </TableCell>

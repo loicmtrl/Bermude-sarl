@@ -39,20 +39,20 @@ const AdminProductsPage = async (props: {
     <div className='space-y-2'>
       <div className='flex-between'>
         <div className='flex items-center gap-3'>
-          <h1 className='h2-bold'>Products</h1>
+          <h1 className='h2-bold'>Produits</h1>
           {searchText && (
             <div>
-              Filtered by <i>&quot;{searchText}&quot;</i>{' '}
+              Filtré par <i>&quot;{searchText}&quot;</i>{' '}
               <Link href='/admin/products'>
                 <Button variant='outline' size='sm'>
-                  Remove Filter
+                  Retirer le filtre
                 </Button>
               </Link>
             </div>
           )}
         </div>
         <Button asChild variant='default'>
-          <Link href='/admin/products/create'>Create Product</Link>
+          <Link href='/admin/products/create'>Créer un produit</Link>
         </Button>
       </div>
 
@@ -60,11 +60,11 @@ const AdminProductsPage = async (props: {
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
-            <TableHead>NAME</TableHead>
-            <TableHead className='text-right'>PRICE</TableHead>
-            <TableHead>CATEGORY</TableHead>
+            <TableHead>NOM</TableHead>
+            <TableHead className='text-right'>PRIX</TableHead>
+            <TableHead>CATÉGORIE</TableHead>
             <TableHead>STOCK</TableHead>
-            <TableHead>RATING</TableHead>
+            <TableHead>NOTE</TableHead>
             <TableHead className='w-[100px]'>ACTIONS</TableHead>
           </TableRow>
         </TableHeader>
@@ -81,7 +81,7 @@ const AdminProductsPage = async (props: {
               <TableCell>{product.rating}</TableCell>
               <TableCell className='flex gap-1'>
                 <Button asChild variant='outline' size='sm'>
-                  <Link href={`/admin/products/${product.id}`}>Edit</Link>
+                  <Link href={`/admin/products/${product.id}`}>Modifier</Link>
                 </Button>
                 <DeleteDialog id={product.id} action={deleteProduct} />
               </TableCell>

@@ -14,7 +14,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'Sign In',
+  title: 'Connexion',
 };
 
 const SignInPage = async (props: {
@@ -43,9 +43,9 @@ const SignInPage = async (props: {
               priority={true}
             />
           </Link>
-          <CardTitle className='text-center'>Sign In</CardTitle>
+          <CardTitle className='text-center'>Connexion</CardTitle>
           <CardDescription className='text-center'>
-            Sign in to your account
+            Connectez-vous à votre compte
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-4'>

@@ -69,23 +69,23 @@ type OrderInformationProps = {
 export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
   return (
     <Html>
-      <Preview>View order receipt</Preview>
+      <Preview>Voir le reçu de commande</Preview>
       <Tailwind>
         <Head />
         <Body className='font-sans bg-white'>
           <Container className='max-w-xl'>
-            <Heading>Purchase Receipt</Heading>
+            <Heading>Reçu d'achat</Heading>
             <Section>
               <Row>
                 <Column>
                   <Text className='mb-0 mr-4 text-gray-500 whitespace-nowrap text-nowrap'>
-                    Order ID
+                    N° de commande
                   </Text>
                   <Text className='mt-0 mr-4'>{order.id.toString()}</Text>
                 </Column>
                 <Column>
                   <Text className='mb-0 mr-4 text-gray-500 whitespace-nowrap text-nowrap'>
-                    Purchase Date
+                    Date d'achat
                   </Text>
                   <Text className='mt-0 mr-4'>
                     {dateFormatter.format(order.createdAt)}
@@ -93,7 +93,7 @@ export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
                 </Column>
                 <Column>
                   <Text className='mb-0 mr-4 text-gray-500 whitespace-nowrap text-nowrap'>
-                    Price Paid
+                    Prix payé
                   </Text>
                   <Text className='mt-0 mr-4'>
                     {formatCurrency(order.totalPrice)}
@@ -125,9 +125,9 @@ export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
                 </Row>
               ))}
               {[
-                { name: 'Items', price: order.itemsPrice },
-                { name: 'Tax', price: order.taxPrice },
-                { name: 'Shipping', price: order.shippingPrice },
+                { name: 'Articles', price: order.itemsPrice },
+                { name: 'Taxe', price: order.taxPrice },
+                { name: 'Livraison', price: order.shippingPrice },
                 { name: 'Total', price: order.totalPrice },
               ].map(({ name, price }) => (
                 <Row key={name} className='py-1'>
