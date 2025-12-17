@@ -21,30 +21,41 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   providers: [
     CredentialsProvider({
-      credentials: {
-        email: { type: 'email' },
-        password: { type: 'password' },
-      },
+  credentials: {
+    email: { type: 'email' },
+    password: { type: 'password' },
+  },
+  async authorize(credentials, _request) {
+    if (!credentials?.email || !credentials.password) {
+      return null;
+    }
 
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+    const user = await prisma.user.findUnique({
+      where: { email: credentials.email },
+    });
 
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
-        });
+    if (!user || !user.password) {
+      return null;
+    }
 
-        if (!user || !user.password) return null;
+    const isMatch = await compare(
+      credentials.password,
+      user.password
+    );
 
-        const isMatch = await compare(credentials.password, user.password);
-        if (!isMatch) return null;
+    if (!isMatch) {
+      return null;
+    }
 
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        };
-      },
-    }),
+    // ⚠️ RETOURNER UN USER COMPLET
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
+  },
+}),
   ],
 
   callbacks: {
