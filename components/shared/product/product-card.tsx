@@ -8,15 +8,20 @@ import Rating from './rating';
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card className='w-full max-w-sm'>
-      <CardHeader className='p-0 items-center'>
-        <Link href={`/product/${product.slug}`}>
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            height={300}
-            width={300}
-            priority={true}
-          />
+      <CardHeader className='p-0'>
+        <Link href={`/product/${product.slug}`} className='block w-full'>
+          <div className='relative w-full aspect-[4/5] overflow-hidden rounded-md bg-secondary'>
+            <Image
+              src={
+                product.images?.[0] ?? '/images/sample-products/placeholder.png'
+              }
+              alt={product.name}
+              fill
+              sizes='(min-width: 1024px) 250px, (min-width: 768px) 220px, 100vw'
+              priority={true}
+              className='object-cover'
+            />
+          </div>
         </Link>
       </CardHeader>
       <CardContent className='p-4 grid gap-4'>

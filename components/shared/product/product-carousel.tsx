@@ -31,14 +31,14 @@ const ProductCarousel = ({ data }: { data: Product[] }) => {
         {data.map((product: Product) => (
           <CarouselItem key={product.id}>
             <Link href={`/product/${product.slug}`}>
-              <div className='relative mx-auto'>
+              <div className='relative mx-auto w-full aspect-[21/9] max-h-[480px] overflow-hidden rounded-lg'>
                 <Image
                   src={product.banner!}
                   alt={product.name}
-                  height='0'
-                  width='0'
+                  fill
                   sizes='100vw'
-                  className='w-full h-auto'
+                  className='object-cover'
+                  priority
                 />
                 <div className='absolute inset-0 flex items-end justify-center'>
                   <h2 className='bg-gray-900 bg-opacity-50 text-2xl font-bold px-2 text-white'>
